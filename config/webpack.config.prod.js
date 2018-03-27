@@ -180,12 +180,13 @@ module.exports = {
                     {
                       loader: require.resolve('css-loader'),
                       options: {
-                        importLoaders: 1,
-                        minimize: true,
-                        sourceMap: shouldUseSourceMap,
+                          importLoaders: 1,
+                          minimize: true,
+                          modules: true,
+                          sourceMap: shouldUseSourceMap,
                       },
                     },
-                    {
+                      {
                       loader: require.resolve('postcss-loader'),
                       options: {
                         // Necessary for external CSS imports to work

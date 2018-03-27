@@ -4,8 +4,10 @@ import styles from './Demo.css';
 
 console.log(styles);
 const Demo = () => (
-    <Paper className={styles.demo} >
-      demo
+    <Paper >
+      <div className={styles.demo}>
+        demo
+      </div>
     </Paper>
 );
 
