@@ -1,0 +1,4 @@
+* TODO setup material-ui
+* TODO setup react-router
+* TODO setup react-redux
+* TODO setup eslint
