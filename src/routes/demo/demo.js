@@ -6,23 +6,22 @@ import styles from './Demo.css';
 import NERPanel from './modules/NERPanel';
 
 const inlineStyles = {
-    root: {
-        width: 900
-    }
+  root: {
+    width: 900
+  }
 };
 
-const Demo = ({ time, getTime }) => (
-    <Panel style={inlineStyles.root}>
-      <Tabs>
-        <Tab label="HORUS Demo"><NERPanel /></Tab>
-        <Tab label="PROCESS CONLL FILE">
-          <div>
-            <h3>{time}</h3>
-            <RaisedButton label="Click me for time" onClick={getTime} />
-          </div>
-        </Tab>
-      </Tabs>
-    </Panel>
+const Demo = (props) => (
+  <Panel style={inlineStyles.root}>
+    <Tabs>
+      <Tab label="HORUS Demo"><NERPanel {...props} /></Tab>
+      <Tab label="PROCESS CONLL FILE">
+        <div>
+          <RaisedButton label="Click me for time" />
+        </div>
+      </Tab>
+    </Tabs>
+  </Panel>
 );
 
 export default Demo;

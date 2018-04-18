@@ -1,15 +1,21 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { getTimeAsync } from 'utils/API';
+import { fetch_demo_query } from 'utils/API';
+import constants from 'store/constants';
 
-export function* getTime(action) {
-    yield delay(400);
-    const time = yield call(getTimeAsync);
-    yield put({ type: 'GET_TIME_SUCCEEDED', payload: time.message});
+export function* fetchHorus(action) {
+  console.log('sending action', action);
+  try {
+    yield delay(1000);
+    const response = yield call(fetch_demo_query);
+    yield put({type: constants.QUERY_HORUS_SUCCEEDED, payload: response});
+  } catch(err) {
+    yield put({type: constants.QUERY_HORUS_FAILED, payload: {status: err.status, message: err.message}});
+  }
 }
 
 function* sagas() {
-    yield takeLatest('GET_TIME_ASYNC', getTime);
+  yield takeLatest(constants.QUERY_HORUS_REQUESTED, fetchHorus);
 }
 
 export default sagas;

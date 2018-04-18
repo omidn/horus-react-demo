@@ -1,13 +1,6 @@
-export const getTime = () => ({
-    type: 'GET_TIME'
-});
+import constants from 'store/constants';
 
-export const timeUpdated = (time) => ({
-    type: 'TIME_UPDATED',
-    time
+export const request_demo = (q) => ({
+  type: constants.QUERY_HORUS_REQUESTED,
+  payload: { q }
 });
-
-export const getTimeAsync = () => ({
-    type: 'GET_TIME_ASYNC'
-});
-

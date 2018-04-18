@@ -1,18 +1,19 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { getTimeAsync } from 'store/actions';
+import { request_demo } from 'store/actions';
 import Demo from './demo';
 
 const mapStateToProps = state => ({
-    time: state.time.message
+  data: state.demo.result,
+  q: state.demo.q,
+  isLoading: state.demo.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-    getTime: () => dispatch(getTimeAsync())
+  onInputChanged: (q) => dispatch(request_demo(q))
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Demo);
 
