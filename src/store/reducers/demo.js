@@ -15,7 +15,8 @@ const demoReducer = (state = defaultState, action) => {
     return {
       ...state,
       isLoading: true,
-      q: action.payload.q
+      q: action.payload.q,
+      selectedIndex: -1
     };
   case constants.QUERY_HORUS_SUCCEEDED:
     return {
