@@ -13,4 +13,6 @@ const Tab = ({ children, ...otherProps }) => (
     </MaterialTab>
 );
 
+Tab.muiName = 'Tab';
+
 export { Tab, Tabs };

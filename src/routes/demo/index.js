@@ -1,24 +1,18 @@
 import React from 'react';
-import { Tab, Tabs } from 'components/Tab';
-import Panel from 'components/Panel';
-import styles from './Demo.css';
-import NERPanel from './modules/NERPanel';
+import { connect } from 'react-redux';
+import { getTimeAsync } from 'store/actions';
+import Demo from './demo';
 
-const inlineStyles = {
-    
-}
+const mapStateToProps = state => ({
+    time: state.time.message
+});
 
-const Demo = () => (
-    <Panel className={styles.demo} >
-      <Tabs>
-        <Tab label="Playground"><NERPanel /></Tab>
-        <Tab label="Import"><div>page 2</div></Tab>
-      </Tabs>
-    </Panel>
-);
+const mapDispatchToProps = dispatch => ({
+    getTime: () => dispatch(getTimeAsync())
+});
 
-export default Demo;
-
-
-
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Demo);
 
