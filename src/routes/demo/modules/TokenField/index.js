@@ -1,6 +1,8 @@
 import React from 'react';
 import Panel from 'components/Panel';
 import Token from 'components/Token';
+import { connect } from 'react-redux';
+import { changeSelectedIndex } from 'store/actions';
 
 const inlineStyles = {
   root: {
@@ -12,30 +14,25 @@ const inlineStyles = {
   }
 };
 
-const TOKENS = [
-  { label: 'paris', isSelected: true, isNeutral: false },
-  { label: 'hilton', isSelected: false, isNeutral: false },
-  { label: 'was', isSelected: false, isNeutral: true},
-  { label: 'once', isSelected: false, isNeutral: true},
-  { label: 'the', isSelected: false, isNeutral: true},
-  { label: 'toast', isSelected: false, isNeutral: false },
-  { label: 'of', isSelected: false, isNeutral: true},
-  { label: 'the', isSelected: false, isNeutral: true},
-  { label: 'town', isSelected: false, isNeutral: false },
-]
-
-const renderTokens = (tokens) => (
-  <div>
-    {tokens.map((token, i) => 
-      <Token key={i} label={token.label} isSelected={token.isSelected} isNeutral={token.isNeutral} />
-    )}
-  </div>
-);
-
-const TokenField = () => (
+const TokenField = ({data, selectedIndex, setSelectedIndex}) => (
   <Panel depth={1} style={inlineStyles.root}>
-    {renderTokens(TOKENS)}
+    {data.map((token, i) =>
+      <Token
+        key={i}
+        label={token.text}
+        isSelected={i === selectedIndex}
+        onClick={e => token.aux || setSelectedIndex(i)}
+        isNeutral={token.aux} />)
+    }
   </Panel>
 );
 
-export default TokenField;
+const mapStateToProps = (state) => ({
+  selectedIndex: state.demo.selectedIndex
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setSelectedIndex: index => dispatch(changeSelectedIndex(index))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TokenField);

@@ -3,9 +3,10 @@ import { request_demo } from 'store/actions';
 import Demo from './demo';
 
 const mapStateToProps = state => ({
-  data: state.demo.result,
+  data: state.demo.result.data,
   q: state.demo.q,
-  isLoading: state.demo.isLoading
+  isLoading: state.demo.isLoading,
+  selectedIndex: state.demo.selectedIndex
 });
 
 const mapDispatchToProps = dispatch => ({

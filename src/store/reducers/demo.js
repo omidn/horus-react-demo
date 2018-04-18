@@ -5,11 +5,11 @@ const defaultState = {
   q: '',
   status: 0,
   result: [],
-  message: ''
+  message: '',
+  selectedIndex: -1
 };
 
 const demoReducer = (state = defaultState, action) => {
-  console.log(action);
   switch(action.type) {
   case constants.QUERY_HORUS_REQUESTED:
     return {
@@ -29,6 +29,11 @@ const demoReducer = (state = defaultState, action) => {
       isLoading: false,
       message: action.payload.message,
       status: action.payload.status
+    };
+  case constants.SELECTED_TOKEN_CHANGE:
+    return {
+      ...state,
+      selectedIndex: action.payload.selectedIndex
     };
   default:
     return state;

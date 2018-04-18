@@ -40,10 +40,10 @@ const getStyle = (isSelected) => {
                          isSelected ? inlineStyles.selected : inlineStyles.unselected
     );    
 }
-const Token = ({key, label, isSelected, isNeutral}) => {
+const Token = ({key, label, isSelected, isNeutral, ...otherProps}) => {
     const colors = getColors(isSelected, isNeutral);
     return (
-        <Chip key={key} style={getStyle(isSelected)} onClick={noop} backgroundColor={colors.background} labelColor={colors.label} >
+        <Chip key={key} style={getStyle(isSelected)} onClick={noop} backgroundColor={colors.background} labelColor={colors.label} {...otherProps} >
           {label}
         </Chip>
     )
