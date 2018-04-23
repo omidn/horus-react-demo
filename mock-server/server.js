@@ -12,12 +12,17 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-  fs.readFile(FAKE_JSON_PATH, { encoding: 'utf-8' }, (err, data) => {
-    res.json({data: JSON.parse(data), message: 'greetings!'});    
-  });
+    fs.readFile(FAKE_JSON_PATH, { encoding: 'utf-8' }, (err, data) => {
+        res.json({data: JSON.parse(data), message: 'greetings!'});    
+    });
+});
 
+app.get('/diego', (req, res) => {
+    fs.readFile('./fake-diego.json', { encoding: 'utf-8' }, (err, data) => {
+        res.json({data: JSON.parse(data)});    
+    });    
 });
 
 app.listen(PORT, _ => {
-  console.log(`server started at port ${PORT}`);
+    console.log(`server started at port ${PORT}`);
 });
